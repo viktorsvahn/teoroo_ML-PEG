@@ -58,7 +58,7 @@ def test_lattice_energy(mlip: tuple[str, Any]) -> None:
 	    
 	    REF_energy = mol.info["REF_energy"]
 	    REF_forces = mol.arrays["REF_forces"]
-	    REF_dipole = np.linalg.norm(mol.info['dipoleMoment'])
+	    REF_dipole = np.linalg.norm(mol.info['REF_dipole'])/EA_TO_DEBYE
 	    
 	    energy = mol.get_potential_energy()
 	    forces = mol.get_forces()
