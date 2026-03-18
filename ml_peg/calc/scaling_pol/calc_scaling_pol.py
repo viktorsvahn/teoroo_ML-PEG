@@ -1,4 +1,4 @@
-"""Run calculations for scaling_polarizability tests."""
+"""Run calculations for scaling_pol tests."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ OUT_PATH = Path(__file__).parent / "outputs"
 @pytest.mark.parametrize("mlip", MODELS.items())
 def test_lattice_energy(mlip: tuple[str, Any]) -> None:
 	"""
-    Run scaling polarizability test.
+    Run scaling polarizability of linear organic molecules test.
 
     Parameters
     ----------
@@ -50,17 +50,11 @@ def test_lattice_energy(mlip: tuple[str, Any]) -> None:
 	for mol in mols:
 	    calc = copy.deepcopy(clean_calc)
 	    mol.calc = calc
-	    #molecule_name = mol.info["config_type"]
-	    
-	    REF_energy = mol.info["REF_energy"]
-	    REF_forces = mol.arrays["REF_forces"]
-	    REF_dipole = np.linalg.norm(mol.info['REF_dipole'])
-	    
+
 	    energy = mol.get_potential_energy()
 	    forces = mol.get_forces()
 	    dipole = np.linalg.norm(calc.results['dipole'])
 	    
-	    #print(molecule_name,REF_dipole,dipole)
 	    mol_out.append(mol)
 
     # Write output structures
