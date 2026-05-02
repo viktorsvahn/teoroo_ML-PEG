@@ -13,5 +13,5 @@ for a in atoms:
 	elif 'cumulene' in a.info['config_type']:
 		cumulenes.append(a)
 
-write('ALKANES.xyz', alkanes)
-write('CUMULENES.xyz', cumulenes)
+write('data/ALKANES.xyz', alkanes)
+write('data/CUMULENES.xyz', cumulenes)
